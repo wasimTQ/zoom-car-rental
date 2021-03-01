@@ -42,4 +42,4 @@ app.use("/api/user", require("./routes/User"));
 app.use("/api/cars", authenticateToken, require("./routes/Car"));
 
 
-app.listen(PORT, console.log("Listening"));
+app.listen(PORT, console.log("Listening on port " + PORT));

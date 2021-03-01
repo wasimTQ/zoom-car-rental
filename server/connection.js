@@ -5,7 +5,7 @@ let hostname, db;
 
 if(env == 'development'){
   hostname = "127.0.0.1";
-
+  require('dotenv').config();
 
   db = new Sequelize('car-rental', process.env.DATABASE_USERNAME, process.env.DATABASE_PASSWORD, {
     host: hostname,

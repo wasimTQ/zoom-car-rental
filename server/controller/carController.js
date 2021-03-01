@@ -21,19 +21,27 @@ exports.getCarsByAvailability = async (req, res) => {
     }
 
     console.log(whereStatement);
-    const cars = await carModel.findAll({
-        where: whereStatement
-    });
-    res.send(cars);
+    try{
+        const cars = await carModel.findAll({
+            where: whereStatement
+        });
+        res.send(cars);
+    }catch (err){
+        res.status(400).send(err);
+    }
 }
 
 exports.postCar = async (req, res) => {
+   try {
     const cars = await carModel.create({
         name: req.body.name,
         price_per_hour: req.body.price,
         availability: true
       });
     res.send(cars);
+   } catch (err) {
+       res.status(400).send(err);
+   }
 }
 
 exports.deleteCar = async (req, res) => {
